@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1mxf2y1q0tnw"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_pro4l"]
+[ext_resource type="Script" path="res://player_camera.gd" id="2_4qri0"]
+[ext_resource type="Texture2D" uid="uid://d1qnu2xnj6wsi" path="res://RedGuyTest.png" id="3_npgky"]
+[ext_resource type="Texture2D" uid="uid://cfcb17qpqbvc7" path="res://Muzzle-Flash.png" id="4_jifog"]
+[ext_resource type="AudioStream" uid="uid://dv636cos1xmvh" path="res://GunSound.mp3" id="5_v2wk1"]
+[ext_resource type="Texture2D" uid="uid://dy8jyxru8hnqk" path="res://light_texture.tres" id="6_7mv6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5gj1"]
+size = Vector2(118, 125)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qo61g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h00kt"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nb44b"]
+polygon = PackedVector2Array(-26, -8, -4, -20, 26, -32, 60, -44, -30, -42, -42, 0, -22, 8, 8, 18, 28, 26, 56, 30, -42, 0, -32, -42)
+
+[node name="player" type="CharacterBody2D" groups=["players"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_pro4l")
+rotation_speed = 10.0
+damageAmount = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_u5gj1")
+
+[node name="Body" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.2657, 0.2657)
+texture = SubResource("CompressedTexture2D_qo61g")
+
+[node name="Gun" type="Sprite2D" parent="Body"]
+position = Vector2(-1.13243e-05, 263.455)
+rotation = 0.00872665
+texture = SubResource("CompressedTexture2D_h00kt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_4qri0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.183493, 0.185167)
+texture = ExtResource("3_npgky")
+
+[node name="GunCooldown" type="Timer" parent="." groups=["players"]]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(89, -8)
+scale = Vector2(0.139648, 0.139648)
+texture = ExtResource("4_jifog")
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_v2wk1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-20, 6)
+energy = 5.63
+range_layer_min = -100
+range_layer_max = 100
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("6_7mv6w")
+texture_scale = 10.0
+height = 19.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D"]
+occluder = SubResource("OccluderPolygon2D_nb44b")
+
+[connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

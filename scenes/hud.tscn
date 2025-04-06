@@ -1,0 +1,208 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4lcnm5h0yvni"]
+
+[sub_resource type="GDScript" id="GDScript_t6pjt"]
+script/source = "extends CanvasLayer
+
+# UI Components
+@onready var ammo_label = $AmmoCounter/AmmoLabel
+@onready var reload_progress_bar = $ReloadTimer/ProgressBar
+@onready var reload_timer_circle = $ReloadTimer/CircleProgress
+@onready var reload_time_label = $ReloadTimer/TimeLabel
+@onready var bullet_container = $BulletVisual/Container
+
+# Configuration
+var max_ammo = 10
+var current_ammo = 10
+var reload_time = 1.5
+var reload_timer = 0
+var is_reloading = false
+
+
+# Bullet icon scene for visual representation
+#var bullet_icon_scene = preload(\"res://scenes/ui/bullet_icon.tscn\")
+
+func _ready():
+	# Initialize HUD elements
+	update_ammo_display()
+	reload_progress_bar.max_value = reload_time
+	reload_progress_bar.value = 0
+	reload_progress_bar.visible = false
+	reload_timer_circle.value = 0
+	reload_timer_circle.visible = false
+	reload_time_label.visible = false
+	
+	# Create bullet icons
+	#_setup_bullet_icons()
+
+func _process(delta):
+	if is_reloading:
+		# Update reload timer
+		reload_timer += delta
+		
+		# Update progress displays
+		var progress = reload_timer / reload_time
+		reload_progress_bar.value = reload_timer
+		reload_timer_circle.value = progress * 100
+		
+		# Update time remaining text
+		var time_left = max(0, reload_time - reload_timer)
+		reload_time_label.text = \"%.1fs\" % time_left
+		
+		# Check if reload is complete
+		if reload_timer >= reload_time:
+			_complete_reload()
+
+# Updates the ammo counter display
+func update_ammo_display():
+	# Update numerical display
+	ammo_label.text = str(current_ammo) + \" / \" + str(max_ammo)
+	
+	# Update bullet visualization
+	for i in bullet_container.get_child_count():
+		var bullet = bullet_container.get_child(i)
+		bullet.modulate = Color.WHITE if i < current_ammo else Color(1, 1, 1, 0.3)
+
+# Initializes the bullet icon visualization
+#func _setup_bullet_icons():
+	## Clear existing icons
+	#for child in bullet_container.get_children():
+		#child.queue_free()
+	#
+	## Create new icons (limit to a reasonable number)
+	#var display_count = min(max_ammo, 10)
+	#for i in display_count:
+		#var bullet = bullet_icon_scene.instantiate()
+		#bullet_container.add_child(bullet)
+
+# Called when player fires weapon
+func fire_weapon():
+	if is_reloading or current_ammo <= 0:
+		return false
+	
+	current_ammo -= 1
+	update_ammo_display()
+	
+	# Auto-reload when empty
+	if current_ammo <= 0:
+		start_reload()
+	
+	return true
+
+# Starts the reload process
+func start_reload():
+	if is_reloading or current_ammo == max_ammo:
+		return
+	
+	is_reloading = true
+	reload_timer = 0
+	
+	# Show reload indicators
+	reload_progress_bar.visible = true
+	reload_timer_circle.visible = true
+	reload_time_label.visible = true
+
+# Completes the reload process
+func _complete_reload():
+	current_ammo = max_ammo
+	is_reloading = false
+	
+	# Hide reload indicators
+	reload_progress_bar.visible = false
+	reload_timer_circle.visible = false
+	reload_time_label.visible = false
+	
+	# Update ammo display
+	update_ammo_display()
+
+# Can be called from outside to cancel reload (e.g., when switching weapons)
+func cancel_reload():
+	if is_reloading:
+		is_reloading = false
+		reload_progress_bar.visible = false
+		reload_timer_circle.visible = false
+		reload_time_label.visible = false
+"
+
+[node name="HUD" type="CanvasLayer"]
+offset = Vector2(50, 0)
+transform = Transform2D(1, 0, 0, 1, 50, 0)
+script = SubResource("GDScript_t6pjt")
+
+[node name="HUDPanel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WeaponIcon" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 52.0
+offset_right = 40.0
+offset_bottom = 92.0
+grow_vertical = 0
+
+[node name="AmmoCounter" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="AmmoCounter"]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 53.0
+offset_bottom = 52.0
+text = "AMMO"
+
+[node name="AmmoLabel" type="Label" parent="AmmoCounter"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 33.0
+offset_right = 211.0
+offset_bottom = 56.0
+text = "6/6"
+
+[node name="ReloadTimer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="ReloadTimer"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 26.0
+offset_right = 83.0
+offset_bottom = 53.0
+
+[node name="TimeLabel" type="Label" parent="ReloadTimer"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 31.0
+offset_right = 152.0
+offset_bottom = 54.0
+text = "1.1s"
+
+[node name="CircleProgress" type="TextureProgressBar" parent="ReloadTimer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BulletVisual" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Container" type="HBoxContainer" parent="BulletVisual"]
+offset_right = 40.0
+offset_bottom = 29.0

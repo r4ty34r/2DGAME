@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwewltljruq1e"]
+
+[ext_resource type="Script" path="res://scripts/main2.gd" id="1_dhog5"]
+[ext_resource type="Texture2D" uid="uid://bu44bvwnwtgoy" path="res://noisetexture.jpg" id="1_ydn3f"]
+[ext_resource type="PackedScene" uid="uid://c18jciqa1gegr" path="res://scenes/horizontal_wall.tscn" id="2_v35dl"]
+[ext_resource type="PackedScene" uid="uid://duaqti2flo1hh" path="res://scenes/vertical_wall.tscn" id="3_ypmmn"]
+[ext_resource type="PackedScene" uid="uid://3oarmx4m5xeo" path="res://scenes/inner_wall.tscn" id="4_jbiud"]
+[ext_resource type="PackedScene" uid="uid://jkkt2a4pbk60" path="res://scenes/cover_wall.tscn" id="5_17yxb"]
+[ext_resource type="PackedScene" uid="uid://ccg6mgmu2veqo" path="res://scenes/control_ui.tscn" id="7_24haq"]
+[ext_resource type="PackedScene" uid="uid://bgt6w34wmv1ow" path="res://scenes/AnimatedPlayer.tscn" id="7_iunv5"]
+
+[node name="MainLevel" type="Node2D"]
+script = ExtResource("1_dhog5")
+metadata/_edit_vertical_guides_ = [187.0, 1152.0]
+metadata/_edit_horizontal_guides_ = [-24.0, 619.0]
+
+[node name="Floor" type="Sprite2D" parent="."]
+self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+texture = ExtResource("1_ydn3f")
+
+[node name="Walls" type="Node2D" parent="Floor" groups=["Walls"]]
+
+[node name="HorizontalWall" parent="Floor/Walls" instance=ExtResource("2_v35dl")]
+
+[node name="HorizontalWall2" parent="Floor/Walls" instance=ExtResource("2_v35dl")]
+position = Vector2(6, 628)
+
+[node name="VerticalWall" parent="Floor/Walls" instance=ExtResource("3_ypmmn")]
+
+[node name="VerticalWall2" parent="Floor/Walls" instance=ExtResource("3_ypmmn")]
+position = Vector2(1158, 10)
+
+[node name="InnerWall" parent="Floor/Walls" instance=ExtResource("4_jbiud")]
+position = Vector2(330, 40)
+rotation = 1.5708
+
+[node name="InnerWall2" parent="Floor/Walls" instance=ExtResource("4_jbiud")]
+position = Vector2(584, 40)
+rotation = 1.5708
+
+[node name="InnerWall3" parent="Floor/Walls" instance=ExtResource("4_jbiud")]
+position = Vector2(896, 355)
+
+[node name="InnerWall4" parent="Floor/Walls" instance=ExtResource("4_jbiud")]
+position = Vector2(936, 127)
+rotation = 1.5708
+
+[node name="InnerWall5" parent="Floor/Walls" instance=ExtResource("4_jbiud")]
+position = Vector2(714, 489)
+
+[node name="InnerWall6" parent="Floor/Walls" instance=ExtResource("4_jbiud")]
+position = Vector2(716, 366)
+rotation = 1.5708
+
+[node name="CoverWall" parent="Floor/Walls" instance=ExtResource("5_17yxb")]
+position = Vector2(150, 400)
+rotation = -0.785398
+
+[node name="CoverWall2" parent="Floor/Walls" instance=ExtResource("5_17yxb")]
+position = Vector2(350, 450)
+rotation = 0.785398
+
+[node name="CharacterBody2D" parent="Floor" instance=ExtResource("7_iunv5")]
+position = Vector2(158, 134)
+scale = Vector2(0.35, 0.35)
+
+[node name="GameOver" parent="." instance=ExtResource("7_24haq")]
+script = null
+
+[node name="GameOverLabel" type="Label" parent="GameOver"]
+offset_left = 74.0
+offset_top = 217.0
+offset_right = 157.0
+offset_bottom = 240.0
+text = "GameOver
+"
+
+[node name="RestartButton" type="Button" parent="GameOver/GameOverLabel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 99.0
+offset_top = -2.0
+offset_right = 221.0
+offset_bottom = 29.0
+text = "Restart Button"
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GameOverCamera" type="Camera2D" parent="."]
+visible = false
+
+[connection signal="pressed" from="GameOver/GameOverLabel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]

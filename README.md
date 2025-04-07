@@ -21,4 +21,5 @@ This project is a 2D arena-style shooter game where the player controls a charac
 ## Getting Started
 1. Clone this repository to your local machine.
 2. Open the project in Godot Engine.
-3. Run the game and follow the on-screen instructions to start playing.
+3. Start running the flask api with python in a separate terminal window.
+4. Run the game and follow the on-screen instructions to start playing.

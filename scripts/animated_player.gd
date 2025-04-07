@@ -43,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle movement
 	var input_direction = 0
+	
+	#wrapped movement and animation logic in this reloading conditional to not avoid conflicting body animations
 	if not reloading:
 		if Input.is_action_pressed("forward"):
 			$Body.play("move_forward")

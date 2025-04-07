@@ -98,7 +98,7 @@ func damage():
 
 	if health <= 0:
 		die()
-	print("\nplayer damage: (current health)", health)
+	#print("\nplayer damage: (current health)", health)
 
 func die():
 	var scene_root = get_tree().current_scene
@@ -106,7 +106,6 @@ func die():
 		queue_free()
 		scene_root.game_over()
 		
-
 
 func _on_gun_cooldown_timeout() -> void:
 	canShoot = true
@@ -177,6 +176,5 @@ func _setup_health_bar_style() -> void:
 	fill_style.corner_radius_bottom_left = 2
 	fill_style.corner_radius_bottom_right = 2
 	healthBar.add_theme_stylebox_override("fill", fill_style)
-	
 	# Make health bar a good size
 	healthBar.custom_minimum_size = Vector2(50, 8)

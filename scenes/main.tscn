@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwewltljruq1e"]
+[gd_scene load_steps=10 format=3 uid="uid://cwewltljruq1e"]
 
 [ext_resource type="Script" path="res://scripts/main2.gd" id="1_dhog5"]
 [ext_resource type="Texture2D" uid="uid://bu44bvwnwtgoy" path="res://noisetexture.jpg" id="1_ydn3f"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jkkt2a4pbk60" path="res://scenes/cover_wall.tscn" id="5_17yxb"]
 [ext_resource type="PackedScene" uid="uid://ccg6mgmu2veqo" path="res://scenes/control_ui.tscn" id="7_24haq"]
 [ext_resource type="PackedScene" uid="uid://bgt6w34wmv1ow" path="res://scenes/AnimatedPlayer.tscn" id="7_iunv5"]
+[ext_resource type="PackedScene" uid="uid://b0brltiubnxwm" path="res://scenes/HTTPNODE.tscn" id="9_vew7o"]
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_dhog5")
@@ -92,6 +93,8 @@ offset_bottom = 23.0
 
 [node name="GameOverCamera" type="Camera2D" parent="."]
 visible = false
+
+[node name="HTTP" parent="." instance=ExtResource("9_vew7o")]
 
 [connection signal="pressed" from="GameOver/GameOverLabel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]

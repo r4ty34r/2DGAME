@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bgt6w34wmv1ow"]
+[gd_scene load_steps=92 format=3 uid="uid://bgt6w34wmv1ow"]
 
 [ext_resource type="Script" path="res://scripts/animated_player.gd" id="1_7csb6"]
 [ext_resource type="Texture2D" uid="uid://d0or07f1kwhar" path="res://spritesheet/rifle/move/survivor-move_rifle_0.png" id="2_hestk"]
@@ -65,7 +65,27 @@
 [ext_resource type="Texture2D" uid="uid://knmc1h0mi0j3" path="res://spritesheet/rifle/shoot/survivor-shoot_rifle_1.png" id="63_0c7k3"]
 [ext_resource type="Texture2D" uid="uid://btm8mvwo4quk0" path="res://spritesheet/rifle/shoot/survivor-shoot_rifle_2.png" id="64_phxk3"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="65_ef2ae"]
+[ext_resource type="Texture2D" uid="uid://d2ix1bahomeld" path="res://spritesheet/feet/run/survivor-run_0.png" id="65_htvit"]
 [ext_resource type="Texture2D" uid="uid://0rlehceyxhbn" path="res://assets/Muzzle-Flash.png" id="65_nlert"]
+[ext_resource type="Texture2D" uid="uid://cpo1pwl71hdua" path="res://spritesheet/feet/run/survivor-run_1.png" id="66_sonxf"]
+[ext_resource type="Texture2D" uid="uid://c7lvocbdgc4mm" path="res://spritesheet/feet/run/survivor-run_2.png" id="67_u5r7s"]
+[ext_resource type="Texture2D" uid="uid://dqj4qh2cd6t6d" path="res://spritesheet/feet/run/survivor-run_3.png" id="68_2c6qy"]
+[ext_resource type="Texture2D" uid="uid://7rawjbe5vkj8" path="res://spritesheet/feet/run/survivor-run_4.png" id="69_louvs"]
+[ext_resource type="Texture2D" uid="uid://26agaliy3qvb" path="res://spritesheet/feet/run/survivor-run_5.png" id="70_beryi"]
+[ext_resource type="Texture2D" uid="uid://ceg6gpy4teg60" path="res://spritesheet/feet/run/survivor-run_6.png" id="71_f60ec"]
+[ext_resource type="Texture2D" uid="uid://b7wrcns5w738l" path="res://spritesheet/feet/run/survivor-run_7.png" id="72_57f4w"]
+[ext_resource type="Texture2D" uid="uid://7hljh7ympxil" path="res://spritesheet/feet/run/survivor-run_8.png" id="73_xoq3d"]
+[ext_resource type="Texture2D" uid="uid://cbitylbtmmejc" path="res://spritesheet/feet/run/survivor-run_9.png" id="74_5lh1x"]
+[ext_resource type="Texture2D" uid="uid://bnurpt4ixylsx" path="res://spritesheet/feet/run/survivor-run_10.png" id="75_1w3t3"]
+[ext_resource type="Texture2D" uid="uid://bhj7gbsxhn3cf" path="res://spritesheet/feet/run/survivor-run_11.png" id="76_5gmwa"]
+[ext_resource type="Texture2D" uid="uid://2sqi3ife3kvw" path="res://spritesheet/feet/run/survivor-run_12.png" id="77_576bl"]
+[ext_resource type="Texture2D" uid="uid://b6d214rqdxtwb" path="res://spritesheet/feet/run/survivor-run_13.png" id="78_yqgwa"]
+[ext_resource type="Texture2D" uid="uid://bkqnxiy0d0i6p" path="res://spritesheet/feet/run/survivor-run_14.png" id="79_bt8g7"]
+[ext_resource type="Texture2D" uid="uid://cjtvjvgvdv32g" path="res://spritesheet/feet/run/survivor-run_15.png" id="80_tgwbi"]
+[ext_resource type="Texture2D" uid="uid://c5axwpcdaflsn" path="res://spritesheet/feet/run/survivor-run_16.png" id="81_oydgs"]
+[ext_resource type="Texture2D" uid="uid://b7r2kftfamtdc" path="res://spritesheet/feet/run/survivor-run_17.png" id="82_nkqal"]
+[ext_resource type="Texture2D" uid="uid://dqsxf4ou0rka0" path="res://spritesheet/feet/run/survivor-run_18.png" id="83_1whoe"]
+[ext_resource type="Texture2D" uid="uid://b7nqtsure0lxx" path="res://spritesheet/feet/run/survivor-run_19.png" id="84_tw4ch"]
 [ext_resource type="Texture2D" uid="uid://dy8jyxru8hnqk" path="res://assets/light_texture.tres" id="88_xkexe"]
 [ext_resource type="PackedScene" uid="uid://c4lcnm5h0yvni" path="res://scenes/hud.tscn" id="89_0illf"]
 
@@ -329,7 +349,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"reload",
-"speed": 22.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -350,129 +370,64 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("65_htvit")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("66_sonxf")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("67_u5r7s")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("68_2c6qy")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("69_louvs")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("70_beryi")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("71_f60ec")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("72_57f4w")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("73_xoq3d")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("74_5lh1x")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("75_1w3t3")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("76_5gmwa")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("77_576bl")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("78_yqgwa")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("79_bt8g7")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("80_tgwbi")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("81_oydgs")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("82_nkqal")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("83_1whoe")
 }, {
 "duration": 1.0,
-"texture": null
-}],
-"loop": true,
-"name": &"run_back",
-"speed": 25.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
+"texture": ExtResource("84_tw4ch")
 }],
 "loop": true,
 "name": &"run_forward",
@@ -493,20 +448,20 @@ polygon = PackedVector2Array(10.5, -14.5, 78.5, -54.5, 113.5, 31.5, 106.5, 60.5,
 [node name="Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7x2fo")
 animation = &"reload"
-frame_progress = 0.931663
+frame_progress = 0.39749
 
 [node name="Feet" type="AnimatedSprite2D" parent="Body"]
 z_index = -1
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_lk5ai")
 animation = &"run_forward"
-frame_progress = 0.154292
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("65_ef2ae")
 
 [node name="GunCooldown" type="Timer" parent="."]
+wait_time = 0.6
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_right = 4.0
@@ -523,7 +478,7 @@ texture = ExtResource("65_nlert")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(41.3333, 26)
-energy = 5.63
+energy = 10.35
 range_layer_min = -100
 range_layer_max = 100
 shadow_enabled = true
@@ -539,7 +494,7 @@ occluder = SubResource("OccluderPolygon2D_4o46w")
 position = Vector2(129, 46)
 
 [node name="HUD" parent="." instance=ExtResource("89_0illf")]
-offset = Vector2(0, 500)
-transform = Transform2D(1, 0, 0, 1, 0, 500)
+offset = Vector2(100, 500)
+transform = Transform2D(1, 0, 0, 1, 100, 500)
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

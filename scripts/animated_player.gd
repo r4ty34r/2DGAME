@@ -9,8 +9,9 @@ extends CharacterBody2D
 @export var health: float = 100
 @export var maxHealth = 100
 var canShoot: bool = true
+var reloading: bool = false
 @export var cooldown = 0.25
-@export var reload_time: float = 1.5
+@export var reload_time: float = 1
 var magSize = 10
 var currentAmmo = 10
 
@@ -42,21 +43,37 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle movement
 	var input_direction = 0
+	if not reloading:
+		if Input.is_action_pressed("forward"):
+			$Body.play("move_forward")
+			$Body/Feet.play("run_forward")
+			input_direction += 1
 	
-	if Input.is_action_pressed("forward"):
-		$Body.play("move_forward")
-		$Body/Feet.play("run_forward")
-		input_direction += 1
-
-	elif Input.is_action_pressed("back"):
-		#$Body.play("move_back")
-		$Body.play_backwards("move_forward")
-		$Body/Feet.play_backwards("run_forward")
-		input_direction -= 1
+		elif Input.is_action_pressed("back"):
+			#$Body.play("move_back")
+			$Body.play_backwards("move_forward")
+			$Body/Feet.play_backwards("run_forward")
+			input_direction -= 1
+		else:
+			$Body.play("idle")
+			$Body/Feet.pause()
 	else:
-		$Body.play("idle")
-		$Body/Feet.stop()
-
+		print("reloading body animation\n")
+		$Body.play("reload")
+		if Input.is_action_pressed("forward"):
+			#$Body.play("move_forward")
+			$Body/Feet.play("run_forward")
+			input_direction += 1
+	
+		elif Input.is_action_pressed("back"):
+			#$Body.play("move_back")
+			#$Body.play_backwards("move_forward")
+			$Body/Feet.play_backwards("run_forward")
+			input_direction -= 1
+		else:
+			#$Body.play("idle")
+			$Body/Feet.pause()
+	
 	# Calculate target velocity based on character's forward direction
 	var forward_direction = Vector2.RIGHT.rotated(rotation)
 	var target_velocity = forward_direction * input_direction * movement_speed
@@ -72,6 +89,7 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	if currentAmmo < 1:
+		reloading = true
 		start_reload()
 		
 		
@@ -111,11 +129,13 @@ func damage():
 	print("\nplayer damage: (current health)", health)
 
 func die():
+	#print("inside animated player script: die()\n")
+	print("username: ", PlayerData.user_name, " has died\n")
 	var scene_root = get_tree().current_scene
 	if scene_root:
 		queue_free()
 		scene_root.game_over()
-		
+	
 
 
 func _on_gun_cooldown_timeout() -> void:
@@ -124,15 +144,18 @@ func _on_gun_cooldown_timeout() -> void:
 
 # implementing new reload  mechanics 
 func start_reload():
+	print("reloading\n")
 	$HUD.start_reload()
-	$Body.play("reload")
+	#$Body.stop()
+	#$Body.play("reload")
 	canShoot = false
 	emit_signal("reload_started", reload_time)  # For UI updates
 	await get_tree().create_timer(reload_time).timeout
 	currentAmmo = magSize  # Refill ammo
 	canShoot = true
 	emit_signal("reload_completed")
-	$Body.stop()
+	reloading = false
+	#$Body.stop()
 
 func damage_done():
 	takingDamage = false

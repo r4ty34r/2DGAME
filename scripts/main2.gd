@@ -10,12 +10,14 @@ extends Node2D
 @onready var game_over_screen = $GameOver
 @onready var restart_button = $GameOver/GameOverLabel/RestartButton
 @onready var game_over_camera = $GameOverCamera
-
+@onready var httpnode = $HTTP
 
 var score = 0
 
 func _ready():
-	print("GameOver hidden in _ready()")
+	print("\nmain2.gd: calling testapi on http node")
+	httpnode.test_api()
+	#print("GameOver hidden in _ready()")
 	#restart_button.hide()
 	game_over_screen.hide()
 	#game_over_camera.hide()
@@ -47,9 +49,10 @@ func spawn_enemy():
 
 func updateScore():
 	score += 1
+	PlayerData.user_score+=1
 	var update: String = "Current Score: "+ String.num(score)
 	scoreLabel.text = update
-	print("score updated\n")
+	print("\nmain2.gd: score updated... PlayerData.score is: ", PlayerData.user_score)
 	
 	# win condition
 	if score == 20:
@@ -61,13 +64,18 @@ func updateScore():
 func game_over():
 	game_over_screen.show()
 	scoreLabel.text = "Final Score: "+ String.num(score)
-
+	#implement the http request here 
+	# send player data inside http reuqest 
+	print("calling send analytics in http script.gd\n")
+	PlayerData.send_flag = true
+	
+	
 	
 	if $GameOver.visible:
-		print("\nGame Over UI should be visible: ", $GameOver.visible)
-		print("\nbutton should be up ")
+		#print("\nGame Over UI should be visible: ", $GameOver.visible)
+		#print("\nbutton should be up ")
 		get_tree().paused = true  # Pause the game
-		print("\ngame paused")
+		#print("\ngame paused")
 		#recenter camera on restart section
 		if game_over_camera:
 			game_over_camera.enabled = true  # Activate backup camera
@@ -76,12 +84,12 @@ func game_over():
 			game_over_camera.global_position = restart_button.global_position  # Recenter on button
 
 func restart_game():
-	print("\nunpausing game")
+	#print("\nunpausing game")
 	get_tree().paused = false  # Unpause
-	print("\nreloading scene")
+	#print("\nreloading scene")
 	#get_tree().reload_current_scene()  # Reload the level
 	get_tree().change_scene_to_file("res://scenes/control_ui.tscn")
 
 func _on_restart_button_pressed() -> void:
-	print("\nrestart button pressed\n")
+	#print("\nrestart button pressed\n")
 	restart_game()

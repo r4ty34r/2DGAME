@@ -13,7 +13,7 @@ script/source = "extends CanvasLayer
 # Configuration
 var max_ammo = 10
 var current_ammo = 10
-var reload_time = 1.5
+var reload_time = 1
 var reload_timer = 0
 var is_reloading = false
 
@@ -204,5 +204,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Container" type="HBoxContainer" parent="BulletVisual"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 29.0

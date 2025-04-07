@@ -49,13 +49,6 @@ var purple_color = Color("#9945FF")  # Solana purple
 var green_color = Color("#14F195")   # Solana green
 
 func _ready():
-	 # Make sure this is the only active instance
-	print("Control UI ready at: ", get_path())
-	
-	for node in get_tree().get_nodes_in_group("*"):
-		if node != self and "control" in node.name.to_lower():
-			print("Found duplicate control node: ", node.name)
-			node.queue_free()
 	# Configure label text and formatting
 	label.text = control_text
 	
@@ -91,7 +84,6 @@ func _add_glow_effect():
 	glow_tween.tween_property(label, "modulate", Color(1, 1, 1, 1), 1.5)
 	
 func _input(event):
-	print("\nINPUT FROM CONTROLUI DETETCED: ", event)
 	# If any input is detected, start the game
 	if event is InputEventKey and event.pressed:
 		set_process_input(false)  # Stop processing input

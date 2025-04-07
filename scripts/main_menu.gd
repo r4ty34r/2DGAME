@@ -61,9 +61,13 @@ func validate_username(username_text):
 
 # Button signal handlers
 func _on_StartGame_pressed():
+	#name is verified so set playerdata username 
+	PlayerData.user_name = $ButtonsContainer/HBoxContainer/UsernameInput.text
+	
 	# Store username locally for now
 	var username = username_input.text
-	print("Starting game with username: ", username)
+	print("\nmain_menu.gd: Player data username is: ", PlayerData.user_name)
+	print("\nmain_menu.gd Starting game with username: ", username)
 	
 	# Change to the game scene
 	var error = get_tree().change_scene_to_file(game_scene_path)

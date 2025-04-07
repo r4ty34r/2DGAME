@@ -67,7 +67,7 @@ func game_over():
 	#implement the http request here 
 	# send player data inside http reuqest 
 	print("calling send analytics in http script.gd\n")
-	PlayerData.send_flag = true
+	PlayerData.send_flag = true # used to control process node in httpscript
 	
 	
 	

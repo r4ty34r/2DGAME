@@ -10,6 +10,7 @@ This project is a 2D arena-style shooter game where the player controls a charac
 - **Game Over:** The game ends when the player's health reaches zero, or when they reach a high score, followed by showing a restart option.
 - **Restart Mechanism:** The game can be restarted by clicking a button after the player loses.
 - **HTTP REQUEST:** While running a flask api in separate terminal, game logs username and score and sends to api.
+  - Must have python installed, execute analytics_api.py in separate terminal to receive http get request on main.tscn ready and http post request on main2.gd game_over()
 
 ## Scene Structure
 - **ControlUI (CanvasLayer):** The starting scene. Upon input, it transitions to the main scene.

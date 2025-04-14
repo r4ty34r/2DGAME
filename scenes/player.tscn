@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1mxf2y1q0tnw"]
+[gd_scene load_steps=8 format=3 uid="uid://d1mxf2y1q0tnw"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_726tq"]
+[ext_resource type="Script" path="res://scripts/ai_nav.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bnqgtufhv4prp" path="res://assets/RedGuyTest.png" id="2_oc4op"]
+[ext_resource type="Script" path="res://scripts/navigation_agent_2d.gd" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dy8jyxru8hnqk" path="res://assets/light_texture.tres" id="6_7mv6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5gj1"]
@@ -14,7 +15,7 @@ polygon = PackedVector2Array(-26, -8, -4, -20, 26, -32, 60, -44, -30, -42, -42, 
 
 [node name="player" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_726tq")
+script = ExtResource("1_dqkch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -66,6 +67,9 @@ height = 19.0
 occluder = SubResource("OccluderPolygon2D_nb44b")
 
 [node name="ShootTimer" type="Timer" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+script = ExtResource("4_dqkch")
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwewltljruq1e"]
+[gd_scene load_steps=11 format=3 uid="uid://cwewltljruq1e"]
 
 [ext_resource type="Script" path="res://scripts/main2.gd" id="1_dhog5"]
 [ext_resource type="Texture2D" uid="uid://bu44bvwnwtgoy" path="res://noisetexture.jpg" id="1_ydn3f"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ccg6mgmu2veqo" path="res://scenes/control_ui.tscn" id="7_24haq"]
 [ext_resource type="PackedScene" uid="uid://bgt6w34wmv1ow" path="res://scenes/AnimatedPlayer.tscn" id="7_iunv5"]
 [ext_resource type="PackedScene" uid="uid://b0brltiubnxwm" path="res://scenes/HTTPNODE.tscn" id="9_vew7o"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_85g3d"]
+vertices = PackedVector2Array(353.297, 317, 345.313, 50.2578, 524.141, 54.75, 528.156, 312.602, 1133.14, 604.93, 726.5, 602.07, 729.523, 541, 994, 541, 1135.85, 413.813, 994, 472.883, 870.641, 408.75, 738.922, 475.883, 877.031, 387.406, 737.906, 347.961, 884.25, 118.609, 1134.93, 53.1797, 1133.06, 335.727, 956.68, 331.242, 949.656, 114.352, 596.117, 62.8203, 599.117, 308.422, 657.891, 355.961, 31, 601.93, 31, 55.1094, 272.039, 57.8828, 272.992, 291.938, 267.633, 317, 660.867, 598.063)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 4, 7, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(12, 10, 11, 13, 14), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(19, 15, 18, 14), PackedInt32Array(20, 19, 14, 13, 21), PackedInt32Array(22, 23, 24, 25, 26), PackedInt32Array(27, 22, 26, 0), PackedInt32Array(27, 0, 3, 21), PackedInt32Array(21, 3, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(21, 45, 282, 48, 283, 293, 280, 307, 343, 307, 335, 40, 534, 45, 538, 302, 589, 299, 586, 53, 1145, 43, 1143, 346, 947, 341, 940, 125, 894, 128, 887, 389, 884, 399, 1146, 404, 1143, 615, 716, 612, 720, 531, 984, 531, 984, 483, 729, 486, 728, 359, 668, 365, 671, 608, 21, 612)])
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_dhog5")
@@ -64,6 +69,9 @@ rotation = 0.785398
 [node name="CharacterBody2D" parent="Floor" instance=ExtResource("7_iunv5")]
 position = Vector2(158, 134)
 scale = Vector2(0.35, 0.35)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Floor"]
+navigation_polygon = SubResource("NavigationPolygon_85g3d")
 
 [node name="GameOver" parent="." instance=ExtResource("7_24haq")]
 script = null

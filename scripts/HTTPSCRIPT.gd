@@ -92,11 +92,34 @@ func send_analytics2():
 		"deaths": 420,
 		"Level": 69
 	}
+	#format of the api data is
+	#player_id (username)
+	#session_time
+	#score
+	#deaths
+	#level
+	#accuracy
+	#damage
+	print("\nhttpscript.gd: setting accuracy")
+	PlayerData.accuracy = PlayerData.shots_landed / PlayerData.shots_fired
+	print("\nhttpsscript.gd: accuracy is: ", PlayerData.accuracy)
+	var testdbdata = {
+		"player_id": PlayerData.user_name,
+		"session_time": PlayerData.session_time,
+		"score": PlayerData.enemies_killed,
+		"deaths": 420,
+		"level": 69,
+		"accuracy": PlayerData.accuracy,
+		"damage" : PlayerData.damage_dealt,
+		"shots_fired": PlayerData.shots_fired
+	}
+	
 	#var json_data = JSON.stringify(analytics_data) # this was just a test 
 	var json_data2 = JSON.stringify(newdata) # actual live data from match
-	print("\nhttpscript.gd: json data to be sent: ",json_data2) 
+	var json_datadb = JSON.stringify(testdbdata)
+	print("\nhttpscript.gd: json data to be sent: ",json_datadb) 
 	#print("\nhttpscript.gd: actual player data", newdata) # printing here to ensure data isnt stale
 
-	var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_data2)
+	var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_datadb)
 	if error != OK:
 		print("Error initiating POST request in send2 function: ", error)

@@ -447,8 +447,8 @@ polygon = PackedVector2Array(10.5, -14.5, 78.5, -54.5, 113.5, 31.5, 106.5, 60.5,
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7x2fo")
-animation = &"reload"
-frame_progress = 0.39749
+animation = &"idle"
+frame_progress = 0.24063
 
 [node name="Feet" type="AnimatedSprite2D" parent="Body"]
 z_index = -1

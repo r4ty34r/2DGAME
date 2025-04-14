@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			$Body.play("idle")
 			$Body/Feet.pause()
 	else:
-		print("reloading body animation\n")
+		#print("reloading body animation\n")
 		$Body.play("reload")
 		if Input.is_action_pressed("forward"):
 			#$Body.play("move_forward")
@@ -110,6 +110,7 @@ func shoot():
 		
 		#increment shots fired 
 		PlayerData.shots_fired+= 1
+		print("animated_player.gd: shots fired: ", PlayerData.shots_fired)
 
 
 
@@ -119,7 +120,7 @@ func damage():
 		healthFeedback()
 		$Camera2D.big_shake()
 	var beforeHealth = health
-	health -=damageAmount
+	health -= damageAmount
 	# Update health bar
 	healthBar.value = health
 	
@@ -131,11 +132,11 @@ func damage():
 
 	if health <= 0:
 		die()
-	print("\nplayer damage: (current health)", health)
+	#print("\nplayer damage: (current health)", health)
 
 func die():
 	#print("inside animated player script: die()\n")
-	print("username: ", PlayerData.user_name, " has died\n")
+	#print("username: ", PlayerData.user_name, " has died\n")
 	var scene_root = get_tree().current_scene
 	if scene_root:
 		queue_free()
@@ -149,7 +150,7 @@ func _on_gun_cooldown_timeout() -> void:
 
 # implementing new reload  mechanics 
 func start_reload():
-	print("reloading\n")
+	#print("reloading\n")
 	$HUD.start_reload()
 	#$Body.stop()
 	#$Body.play("reload")

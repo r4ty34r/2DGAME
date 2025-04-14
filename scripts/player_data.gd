@@ -12,6 +12,7 @@ var accuracy: float = 0
 var session_seconds: float = 0.0 # this is in seconds , divide by 60 for mins
 var send_flag: bool = false
 var scene_start_time: int = 0
+var session_time: String
 func _ready():
 	print("\nplayer data script loaded")
 
@@ -23,3 +24,12 @@ func _ready():
 		#"deaths": 420,
 		#"Level": 69
 	#}
+
+#format of the api data is
+	#player_id (username)
+	#session_time
+	#score
+	#deaths
+	#level
+	#accuracy
+	#damage

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var rotation_speed: float = 5.0  # Radians per second
 @export var movement_speed: float = 500.0  # Pixels per second
 @export var acceleration: float = 20.0  # How quickly the character reaches full speed
-@export var damageAmount = 100
+@export var damageAmount = 25
 @export var health: float = 100
 @export var maxHealth = 100
 var canShoot: bool = true
@@ -86,7 +86,8 @@ func damage():
 		healthFeedback()
 		$Camera2D.big_shake()
 	var beforeHealth = health
-	health -=damageAmount
+	health -= damageAmount
+	PlayerData.damage_dealt += damageAmount
 	# Update health bar
 	healthBar.value = health
 	
@@ -101,6 +102,7 @@ func damage():
 	#print("\nplayer damage: (current health)", health)
 
 func die():
+	PlayerData.enemies_killed += 1
 	var scene_root = get_tree().current_scene
 	if scene_root:
 		queue_free()

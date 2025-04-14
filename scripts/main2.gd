@@ -65,15 +65,18 @@ func updateScore():
 
 func game_over():
 	var time_taken = get_scene_runtime_string()
-	print("Level completed in: ", time_taken)
-	
-	PlayerData.accuracy = PlayerData.shots_landed / PlayerData.shots_fired
-	print("\nShooting accuracy is: ", PlayerData.accuracy)
+	print("main2.gd: Level completed in: ", time_taken)
+	PlayerData.session_time = time_taken
+	print("\nmain2.gd: Shots fired is: ", PlayerData.shots_fired)
+	print("\nmain2.gd: Shots landed is: ", PlayerData.shots_landed)
+	print("\nmain2.gd: Shooting accuracy is: ", PlayerData.accuracy)
+	print("\nmain2.gd: Damage dealt iS: ", PlayerData.damage_dealt)
+
 	game_over_screen.show()
-	scoreLabel.text = "Final Score: "+ String.num(score)
+	scoreLabel.text = "Final Score: "+ String.num(PlayerData.user_score)
 	#implement the http request here 
 	# send player data inside http reuqest 
-	print("animated_player.gd: Sending http post request\n")
+	print("main2.gd: animated_player.gd: Sending http post request\n")
 	PlayerData.send_flag = true # used to control process node in httpscript
 	
 	

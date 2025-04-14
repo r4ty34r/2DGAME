@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene = preload("res://scenes/enemy_bullet.tscn")
 @export var shoot_interval: float = 1.0
 @export var health: float = 100.0
-@export var damage_amount: float = 100.0
+@export var damage_amount: float = 25.0
 
 # State Tracking
 enum EnemyState {IDLE, CHASE, ATTACK, RETREAT}
@@ -85,8 +85,9 @@ func shoot():
 		var random_spread = randf_range(-5, 5)
 		bullet.rotation = rotation + deg_to_rad(random_spread)
 
-func damage(amount: float = damage_amount):
-	health -= amount
+func damage():
+	health -= damage_amount
+	PlayerData.damage_dealt += damage_amount
 	
 	# Flash sprite when hit
 	var sprite = $Sprite2D

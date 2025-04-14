@@ -4,6 +4,7 @@ extends Node
 @onready var http_request = $HTTPRequest  # Adjust path if needed
 
 func _ready():
+	print("\nhttpscript.gd: node ready, connecting signal and testing GET request")
 	# Connect the request_completed signal
 	http_request.request_completed.connect(_on_request_completed)
 	
@@ -12,13 +13,13 @@ func _ready():
 	
 	# Uncomment to test the /analytics endpoint (POST request)
 	#send_analytics()
-	print("done connected http request in http script\n")
+	#print("done connected http request in http script\n")
 
 # Function to test the /test endpoint (GET)
 
 func _process(_delta: float) -> void:
 	if PlayerData.send_flag == true:
-		print("\ninside http process func... analytics data to be sent soon ")
+		print("\nhttpscript.gd: sending data")
 		send_analytics2()
 		PlayerData.send_flag = false
 
@@ -42,7 +43,7 @@ func send_analytics():
 		"deaths": 3,
 		"level": 5
 	}
-	print("\nhttpscript.gd: sending actual player data", PlayerData.actual_data)
+	#print("\nhttpscript.gd: sending actual player data", PlayerData.actual_data)
 	var json_data = JSON.stringify(PlayerData.actual_data)
 	var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_data)
 	if error != OK:
@@ -56,7 +57,7 @@ func _on_request_completed(result, response_code, headers, body):
 			var parse_result = json.parse(body.get_string_from_utf8())
 			if parse_result == OK:
 				var data = json.data
-				print("Response from Flask: ", data)
+				print("httpscript.gd: Response from Flask: ", data)
 			else:
 				print("Failed to parse JSON: ", json.get_error_message())
 		elif response_code == 400:
@@ -67,7 +68,7 @@ func _on_request_completed(result, response_code, headers, body):
 		print("Request failed with result: ", result)
 
 func send_analytics2():
-	print("\n httpscript.gd: send_analytics2: sending http data to flask")
+	#print("\n httpscript.gd: send_analytics2: sending http data to flask")
 	var url = "http://127.0.0.1:8000/analytics"
 	var headers = ["Content-Type: application/json"]
 	
@@ -83,6 +84,7 @@ func send_analytics2():
 	 #Example analytics data
 	var analytics_data = analytics_datasample
 	
+	# Had to recreate data struct because stale data was being sent as null
 	var newdata = {
 		"player_id": PlayerData.user_name,
 		"session_time": 69420,
@@ -90,13 +92,11 @@ func send_analytics2():
 		"deaths": 420,
 		"Level": 69
 	}
-	
-	var json_data = JSON.stringify(analytics_data)
-	var json_data2 = JSON.stringify(newdata)
-	print("\nhttpscript.gd: json data to be sent: ",json_data2)
-	print("\nhttpscript.gd: actual player data", newdata)
+	#var json_data = JSON.stringify(analytics_data) # this was just a test 
+	var json_data2 = JSON.stringify(newdata) # actual live data from match
+	print("\nhttpscript.gd: json data to be sent: ",json_data2) 
+	#print("\nhttpscript.gd: actual player data", newdata) # printing here to ensure data isnt stale
 
 	var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_data2)
 	if error != OK:
 		print("Error initiating POST request in send2 function: ", error)
-	

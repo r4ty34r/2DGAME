@@ -2,8 +2,8 @@ extends CharacterBody2D
 @onready var bullet_scene = preload("res://scenes/bullet.tscn")
 @onready var healthBar = $ProgressBar
 @onready var marker = $Marker2D
-@export var rotation_speed: float = 7.0  # Radians per second
-@export var movement_speed: float = 1000.0  # Pixels per second
+@export var rotation_speed: float = 5.0  # Radians per second
+@export var movement_speed: float = 500.0  # Pixels per second
 @export var acceleration: float = 5.0  # How quickly the character reaches full speed
 @export var damageAmount = 25
 @export var health: float = 100
@@ -107,6 +107,9 @@ func shoot():
 		currentAmmo -=1
 		$GunCooldown.start()
 		canShoot = false
+		
+		#increment shots fired 
+		PlayerData.shots_fired+= 1
 
 
 

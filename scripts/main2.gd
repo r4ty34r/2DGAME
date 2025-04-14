@@ -12,10 +12,13 @@ extends Node2D
 @onready var game_over_camera = $GameOverCamera
 @onready var httpnode = $HTTP
 
-var score = 0
+var score: int = 0
+var scene_start_time: int = 0
 
 func _ready():
-	print("\nmain2.gd: calling testapi on http node")
+	scene_start_time = Time.get_ticks_msec()
+
+	#print("\nmain2.gd: calling testapi on http node")
 	httpnode.test_api()
 	#print("GameOver hidden in _ready()")
 	#restart_button.hide()
@@ -52,21 +55,25 @@ func updateScore():
 	PlayerData.user_score+=1
 	var update: String = "Current Score: "+ String.num(score)
 	scoreLabel.text = update
-	print("\nmain2.gd: score updated... PlayerData.score is: ", PlayerData.user_score)
+	#print("\nmain2.gd: score updated... PlayerData.score is: ", PlayerData.user_score)
 	
 	# win condition
 	if score == 20:
 		print("\nhigh score reached")
-
 		game_over()
 
 
 func game_over():
+	var time_taken = get_scene_runtime_string()
+	print("Level completed in: ", time_taken)
+	
+	PlayerData.accuracy = PlayerData.shots_landed / PlayerData.shots_fired
+	print("\nShooting accuracy is: ", PlayerData.accuracy)
 	game_over_screen.show()
 	scoreLabel.text = "Final Score: "+ String.num(score)
 	#implement the http request here 
 	# send player data inside http reuqest 
-	print("calling send analytics in http script.gd\n")
+	print("animated_player.gd: Sending http post request\n")
 	PlayerData.send_flag = true # used to control process node in httpscript
 	
 	
@@ -93,3 +100,11 @@ func restart_game():
 func _on_restart_button_pressed() -> void:
 	#print("\nrestart button pressed\n")
 	restart_game()
+
+func get_scene_runtime_string() -> String:
+	var elapsed = Time.get_ticks_msec() - scene_start_time
+	var total_seconds = int(elapsed / 1000)
+	var hours = total_seconds / 3600
+	var minutes = (total_seconds % 3600) / 60
+	var seconds = total_seconds % 60
+	return "%d:%02d:%02d" % [hours, minutes, seconds]

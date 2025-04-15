@@ -8,9 +8,9 @@ app = Flask(__name__)
 # Database configuration
 DB_HOST = 'localhost'
 DB_PORT = 3306
-DB_USER = 'root'
-DB_PASSWORD = 'rootpassword'
-DB_NAME = 'godot'
+DB_USER = '****'
+DB_PASSWORD = '****'
+DB_NAME = '****'
 
 # Database connection function
 def get_db_connection():

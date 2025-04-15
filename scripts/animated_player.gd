@@ -110,7 +110,7 @@ func shoot():
 		
 		#increment shots fired 
 		PlayerData.shots_fired+= 1
-		print("animated_player.gd: shots fired: ", PlayerData.shots_fired)
+		print("animated_player.gd: total shots fired: ", PlayerData.shots_fired)
 
 
 

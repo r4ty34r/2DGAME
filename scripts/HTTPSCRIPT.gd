@@ -100,8 +100,6 @@ func send_analytics2():
 	#level
 	#accuracy
 	#damage
-	print("\nhttpscript.gd: setting accuracy")
-	PlayerData.accuracy = PlayerData.shots_landed / PlayerData.shots_fired
 	print("\nhttpsscript.gd: accuracy is: ", PlayerData.accuracy)
 	var testdbdata = {
 		"player_id": PlayerData.user_name,

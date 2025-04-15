@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1mxf2y1q0tnw"]
 
-[ext_resource type="Script" path="res://scripts/ai_nav.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://4hpf1lt7xa5u" path="res://scripts/ai_nav.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bnqgtufhv4prp" path="res://assets/RedGuyTest.png" id="2_oc4op"]
-[ext_resource type="Script" path="res://scripts/navigation_agent_2d.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dvqpwfo06hs3j" path="res://scripts/navigation_agent_2d.gd" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dy8jyxru8hnqk" path="res://assets/light_texture.tres" id="6_7mv6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5gj1"]

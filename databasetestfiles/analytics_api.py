@@ -2,11 +2,14 @@ from flask import Flask, request, jsonify
 import pymysql
 import os
 
+
+
 app = Flask(__name__)
 
 # Database connection function - for testing, you can use SQLite instead
 def get_db_connection():
     # For testing, print the data instead of storing it
+
     return None
 
 # API endpoint to receive game analytics

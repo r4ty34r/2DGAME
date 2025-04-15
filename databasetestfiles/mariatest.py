@@ -4,8 +4,8 @@ import pymysql
 DB_HOST = 'localhost'
 DB_PORT = 3306
 DB_USER = 'root'
-DB_PASSWORD = 'rootpassword'
-DB_NAME = 'testdb'
+DB_PASSWORD = 'Dido1234!!*'
+DB_NAME = 'projectTest'
 
 try:
     # Connect to the MariaDB database
@@ -22,7 +22,7 @@ try:
 
     with connection.cursor() as cursor:
         # Example query: get all rows from a test table
-        cursor.execute("SELECT * FROM players;")
+        cursor.execute("describe players;")
         results = cursor.fetchall()
 
         print("📦 Query Results:")

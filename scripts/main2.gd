@@ -15,6 +15,7 @@ extends Node2D
 var score: int = 0
 var scene_start_time: int = 0
 
+
 func _ready():
 	scene_start_time = Time.get_ticks_msec()
 
@@ -69,7 +70,9 @@ func game_over():
 	PlayerData.session_time = time_taken
 	print("\nmain2.gd: Shots fired is: ", PlayerData.shots_fired)
 	print("\nmain2.gd: Shots landed is: ", PlayerData.shots_landed)
-	print("\nmain2.gd: Shooting accuracy is: ", PlayerData.accuracy)
+	PlayerData.accuracy = snapped(float(PlayerData.shots_landed) / PlayerData.shots_fired, 0.01)
+	#PlayerData.accuracy = float(PlayerData.shots_landed) / float(PlayerData.shots_fired)
+	#print("\nmain2.gd: formatted Shooting accuracy is: %.2f" % PlayerData.accuracy)
 	print("\nmain2.gd: Damage dealt iS: ", PlayerData.damage_dealt)
 
 	game_over_screen.show()

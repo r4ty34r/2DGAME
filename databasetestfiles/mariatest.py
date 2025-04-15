@@ -2,10 +2,10 @@ import pymysql
 
 # Database configuration
 DB_HOST = 'localhost'
-DB_PORT = 3306
-DB_USER = 'root'
-DB_PASSWORD = 'Dido1234!!*'
-DB_NAME = 'projectTest'
+DB_PORT = 3306 # default port for mysql
+DB_USER = 'INSERT USER'
+DB_PASSWORD = 'INSERT PASSWORD'
+DB_NAME = 'INSERT DATABASE NAME'
 
 try:
     # Connect to the MariaDB database

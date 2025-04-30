@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dffawvk80x16x"]
+
+[ext_resource type="PackedScene" uid="uid://bgt6w34wmv1ow" path="res://scenes/AnimatedPlayer.tscn" id="1_t1l38"]
+[ext_resource type="PackedScene" uid="uid://bfcuw86i4ge8b" path="res://scenes/health_power_up.tscn" id="2_go4jl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_t1l38")]
+
+[node name="PowerUp" parent="." instance=ExtResource("2_go4jl")]
+position = Vector2(384, 25)

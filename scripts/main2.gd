@@ -22,13 +22,6 @@ var elapsed_time
 
 func _ready():
 	scene_start_time = Time.get_ticks_msec()
-	 # Create a global audio player
-	var music_player = AudioStreamPlayer.new()
-	music_player.stream = preload("res://music/GameplayMusic.ogg")
-	music_player.autoplay = true    
-	# Add it to the scene tree
-	add_child(music_player)
-	$GameplayAudio.play()
 
 	#print("\nmain2.gd: calling testapi on http node")
 	httpnode.test_api()

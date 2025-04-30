@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bgt6w34wmv1ow"]
+[gd_scene load_steps=93 format=3 uid="uid://bgt6w34wmv1ow"]
 
 [ext_resource type="Script" uid="uid://cfqsymall0na6" path="res://scripts/animated_player.gd" id="1_7csb6"]
 [ext_resource type="Texture2D" uid="uid://d0or07f1kwhar" path="res://spritesheet/rifle/move/survivor-move_rifle_0.png" id="2_hestk"]
@@ -86,6 +86,7 @@
 [ext_resource type="Texture2D" uid="uid://b7r2kftfamtdc" path="res://spritesheet/feet/run/survivor-run_17.png" id="82_nkqal"]
 [ext_resource type="Texture2D" uid="uid://dqsxf4ou0rka0" path="res://spritesheet/feet/run/survivor-run_18.png" id="83_1whoe"]
 [ext_resource type="Texture2D" uid="uid://b7nqtsure0lxx" path="res://spritesheet/feet/run/survivor-run_19.png" id="84_tw4ch"]
+[ext_resource type="AudioStream" uid="uid://32ob6pvpoqkf" path="res://music/GunSound.mp3" id="87_7kdne"]
 [ext_resource type="Texture2D" uid="uid://dy8jyxru8hnqk" path="res://assets/light_texture.tres" id="88_xkexe"]
 [ext_resource type="PackedScene" uid="uid://c4lcnm5h0yvni" path="res://scenes/hud.tscn" id="89_0illf"]
 
@@ -439,6 +440,7 @@ polygon = PackedVector2Array(-26, -8, -4, -20, 26, -32, 60, -44, -30, -42, -42, 
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["players"]]
 script = ExtResource("1_7csb6")
+metadata/_edit_vertical_guides_ = [146.0]
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-28.5351, 14.4998)
@@ -475,6 +477,7 @@ scale = Vector2(0.139648, 0.139648)
 texture = ExtResource("65_nlert")
 
 [node name="GunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("87_7kdne")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(41.3333, 26)

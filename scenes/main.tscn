@@ -17,8 +17,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(21, 45, 282, 48, 283, 2
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_dhog5")
-metadata/_edit_vertical_guides_ = [187.0, 1152.0]
-metadata/_edit_horizontal_guides_ = [-24.0, 619.0]
+metadata/_edit_vertical_guides_ = [187.0, 1152.0, 1146.0]
+metadata/_edit_horizontal_guides_ = [-24.0, 620.0, 472.0]
 
 [node name="Floor" type="Sprite2D" parent="."]
 self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
@@ -71,7 +71,15 @@ position = Vector2(158, 134)
 scale = Vector2(0.35, 0.35)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Floor"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_85g3d")
+
+[node name="SpawnZone" type="Area2D" parent="Floor"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/SpawnZone"]
+polygon = PackedVector2Array(19, 46, 282, 47, 283, 306, 333, 306, 335, 57, 535, 52, 536, 305, 601, 300, 591, 45, 1140, 50, 1139, 350, 941, 351, 941, 131, 890, 123, 893, 401, 1144, 393, 1142, 618, 722, 618, 720, 531, 989, 532, 989, 479, 725, 477, 722, 347, 670, 350, 669, 622, 25, 617)
 
 [node name="GameOver" parent="." instance=ExtResource("7_24haq")]
 script = null
@@ -104,5 +112,8 @@ visible = false
 
 [node name="HTTP" parent="." instance=ExtResource("9_vew7o")]
 
+[node name="PowerUpTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="GameOver/GameOverLabel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
+[connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]

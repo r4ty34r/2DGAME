@@ -186,7 +186,7 @@ func healthFeedback():
 
 
 func _animate_health_bar(from_value: float, to_value: float) -> void:
-	var tween =get_tree().create_tween()
+	var tween = get_tree().create_tween()
 	# Cancel any existing animation
 	if tween and tween.is_valid():
 		tween.kill()

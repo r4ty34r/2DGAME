@@ -16,6 +16,7 @@ var magSize = 10
 var currentAmmo = 10
 
 
+
 func _ready() -> void:
 	$GunCooldown.wait_time = cooldown
 	# Initialize the health bar
@@ -38,6 +39,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("rotateRight"):
 		rotation_direction += 1
 	
+	if Input.is_key_label_pressed(KEY_R): # manual reload only if not full
+		if currentAmmo < magSize:
+			reloading = true
+			start_reload() 
+			$Body.play("reload")
 	# Apply rotation
 	rotation += rotation_direction * rotation_speed * delta
 	
@@ -222,3 +228,7 @@ func _setup_health_bar_style() -> void:
 	
 	# Make health bar a good size
 	healthBar.custom_minimum_size = Vector2(50, 8)
+
+
+func add_health(amount):
+	health+= amount

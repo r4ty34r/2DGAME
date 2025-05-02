@@ -40,7 +40,7 @@
 ### NEW VERSION BELOW 
 extends CanvasLayer
 
-@export_multiline var control_text: String = "Use [W][S] to move\n[J][L] to rotate\n[SPACE] to shoot\n\nPress any key to start"
+@export_multiline var control_text: String = "Use [W][S] to move\n[J][L] to rotate\n[SPACE] to shoot\n[R] to reload\nPress any key to start"
 @export var fade_duration: float = 0.5
 @onready var label: Label = $Label
 

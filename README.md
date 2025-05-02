@@ -9,6 +9,8 @@ This project is a 2D arena-style shooter game where the player controls a charac
 - **Enemy Spawning:** Enemies spawn based on a timer.
 - **Game Over:** The game ends when the player's health reaches zero, or when they reach a high score, followed by showing a restart option.
 - **Restart Mechanism:** The game can be restarted by clicking a button after the player loses.
+
+#update: missing api code in this repo for local, game posts data to a dedicated server, see scripts/httpscript.gd 
 - **HTTP REQUEST:** While running a flask api in separate terminal, game logs username and score and sends to api.
   - Must have python installed, execute analytics_api.py in separate terminal to receive http get request on main.tscn ready and http post request on main2.gd game_over()
 

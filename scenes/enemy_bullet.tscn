@@ -7,7 +7,7 @@
 radius = 1.75
 height = 14.0
 
-[node name="enemy_bullet" type="Area2D"]
+[node name="enemy_bullet" type="Area2D" groups=["bullets"]]
 script = ExtResource("1_wrma3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

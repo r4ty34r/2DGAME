@@ -88,6 +88,7 @@ func shoot():
 		var bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_position = global_position
+		$GunSound.play()
 		
 		# Add slight randomness to shooting for more natural behavior
 		var random_spread = randf_range(-5, 5)
@@ -137,17 +138,14 @@ func navigate_to_target(target_position: Vector2):
 	if navigation_agent.is_navigation_finished():
 		velocity = Vector2.ZERO
 		return
-	
+
 	# Get next position in path
 	var next_position = navigation_agent.get_next_path_position()
-	
 	# Calculate velocity
 	var current_speed = speed
 	if current_state == EnemyState.RETREAT:
 		current_speed *= 0.8  # Slower when retreating
-	
 	var new_velocity = global_position.direction_to(next_position) * current_speed
-	
 	# Use avoidance if enabled
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.set_velocity(new_velocity)

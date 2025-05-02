@@ -20,7 +20,7 @@ script = ExtResource("1_b0fxm")
 layout_mode = 0
 offset_right = 1144.0
 offset_bottom = 641.0
-color = Color(0.275571, 0.518946, 0.232826, 1)
+color = Color(0.190762, 0.190762, 0.190762, 1)
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -58,3 +58,5 @@ text = "Options"
 [node name="QuitButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

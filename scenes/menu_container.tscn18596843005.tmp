@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dapg7iw0ca38o"]
+
+[sub_resource type="SystemFont" id="SystemFont_s36sq"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 500
+font_stretch = 125
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmw3p"]
+font = SubResource("SystemFont_s36sq")
+font_size = 36
+
+[node name="MenuContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1144.0
+offset_bottom = 641.0
+color = Color(0.275571, 0.518946, 0.232826, 1)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 191.0
+offset_right = 826.0
+offset_bottom = 367.0
+
+[node name="Label" type="Label" parent="ButtonsContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ButtonsContainer/HBoxContainer"]
+layout_mode = 2
+text = "Username:"
+label_settings = SubResource("LabelSettings_gmw3p")
+
+[node name="UsernameInput" type="LineEdit" parent="ButtonsContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+
+[node name="ErrorLabel" type="Label" parent="ButtonsContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+text = "Quit"

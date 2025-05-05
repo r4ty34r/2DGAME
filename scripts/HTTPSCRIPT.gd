@@ -26,8 +26,9 @@ func _process(_delta: float) -> void:
 
 func test_api():
 	#var url = "http://127.0.0.1:8000/test"
-	var url2 = "http://ocodes.xyz:8080/analytics/api/test"
-	var error = http_request.request(url2)
+	#var url2 = "http://ocodes.xyz:8080/analytics/api/test"
+	var url = "http://ocodes.xyz/analytics/api/test"
+	var error = http_request.request(url)
 	if error != OK:
 		print("Error initiating GET request: ", error)
 
@@ -74,14 +75,15 @@ func _on_request_completed(result, response_code, headers, body):
 func send_analytics2():
 	#print("\n httpscript.gd: send_analytics2: sending http data to flask")
 	#var url = "http://127.0.0.1:8000/analytics"
-	var analytics_url = "http://ocodes.xyz:8080/analytics/api/submit"
+	#var analytics_url = "http://ocodes.xyz:8080/analytics/api/submit"
+	var url = "http://ocodes.xyz/analytics/api/submit"
 	var headers = ["Content-Type: application/json"]
 	
 	# setting the data , var should be renamed 
 	var testdbdata = {
 		"player_id": PlayerData.user_name,
 		"session_time": PlayerData.session_time,
-		"score": PlayerData.enemies_killed,
+		"score": PlayerData.user_score,
 		"deaths": 420,
 		"level": 69,
 		"accuracy": PlayerData.accuracy,
@@ -97,7 +99,7 @@ func send_analytics2():
 	print("\nhttpscript.gd: json data to be sent: ",json_datadb) 
 	#print("\nhttpscript.gd: actual player data", newdata) # printing here to ensure data isnt stale
 
-	var error = http_request.request(analytics_url, headers, HTTPClient.METHOD_POST, json_datadb)
+	var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_datadb)
 	if error != OK:
 		print("Error initiating POST request in send2 function: ", error)
 

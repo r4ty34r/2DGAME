@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
 		body.damage()
-		PlayerData.enemies_killed+=1 # remove this when game is not one shot kill and add to enemy die function
+		#PlayerData.enemies_killed+=1 # remove this when game is not one shot kill and add to enemy die function
 		PlayerData.shots_landed += 1
 		queue_free()  # Destroy bullet on collision
 	

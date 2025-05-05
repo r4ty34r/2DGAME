@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0brltiubnxwm"]
 
-[ext_resource type="Script" uid="uid://wc82bc81pp27" path="res://scripts/HTTPSCRIPT.gd" id="1_6vxdq"]
+[ext_resource type="Script" path="res://scripts/HTTPSCRIPT.gd" id="1_6vxdq"]
 
 [node name="Node" type="Node"]
 process_mode = 3

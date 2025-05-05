@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dljwue4hdgmwd"
-path="res://.godot/imported/Dungeon_Tileset.png-86e6a28e5a50f836ca9e00bd5d864744.ctex"
+uid="uid://bxhu4qqv5cji"
+path="res://.godot/imported/medpacktransp.png-1058040ec75f83e0d13c1c3bf0cb632d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dungeon_Tileset.png"
-dest_files=["res://.godot/imported/Dungeon_Tileset.png-86e6a28e5a50f836ca9e00bd5d864744.ctex"]
+source_file="res://scenes/medpacktransp.png"
+dest_files=["res://.godot/imported/medpacktransp.png-1058040ec75f83e0d13c1c3bf0cb632d.ctex"]
 
 [params]
 

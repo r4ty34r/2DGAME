@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 func test_api():
 	#var url = "http://127.0.0.1:8000/test"
 	#var url2 = "http://ocodes.xyz:8080/analytics/api/test"
-	var url = "http://ocodes.xyz/analytics/api/test"
+	var url = "https://ocodes.xyz/analytics/api/test"
 	var error = http_request.request(url)
 	if error != OK:
 		print("Error initiating GET request: ", error)
@@ -76,7 +76,7 @@ func send_analytics2():
 	#print("\n httpscript.gd: send_analytics2: sending http data to flask")
 	#var url = "http://127.0.0.1:8000/analytics"
 	#var analytics_url = "http://ocodes.xyz:8080/analytics/api/submit"
-	var url = "http://ocodes.xyz/analytics/api/submit"
+	var url = "https://ocodes.xyz/analytics/api/submit"
 	var headers = ["Content-Type: application/json"]
 	
 	# setting the data , var should be renamed 
@@ -109,7 +109,7 @@ func send_request_to_new_url(url: String):
 	var testdbdata = {
 		"player_id": PlayerData.user_name,
 		"session_time": PlayerData.session_time,
-		"score": PlayerData.enemies_killed,
+		"score": PlayerData.user_score,
 		"deaths": 420,
 		"level": 69,
 		"accuracy": PlayerData.accuracy,

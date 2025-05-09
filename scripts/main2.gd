@@ -151,6 +151,9 @@ func _on_power_up_timer_timeout() -> void:
 	if player.health < 60:
 		spawn_health_powerup() # commented out  to test health bar animation
 		#print("power up spawn")
+		
+
+
 # function to control random spawning of power ups and enemies
 func get_random_point_in_area(area: Area2D) -> Vector2:
 	# Get the collision polygon

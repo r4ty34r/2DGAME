@@ -1,15 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dapg7iw0ca38o"]
+[gd_scene load_steps=7 format=3 uid="uid://dapg7iw0ca38o"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_b0fxm"]
 
-[sub_resource type="SystemFont" id="SystemFont_s36sq"]
-font_names = PackedStringArray("Comic Sans MS")
-font_weight = 500
-font_stretch = 125
+[sub_resource type="FontVariation" id="FontVariation_1ltnh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3r0kd"]
+line_spacing = 5.0
+font = SubResource("FontVariation_1ltnh")
+font_size = 34
+font_color = Color(0.864512, 7.71055e-05, 0.678341, 1)
+outline_size = 11
+outline_color = Color(0.00139853, 0.000428424, 0.000652536, 1)
+shadow_size = 1000
+
+[sub_resource type="FontVariation" id="FontVariation_pof24"]
+
+[sub_resource type="FontVariation" id="FontVariation_l8n7c"]
+base_font = SubResource("FontVariation_pof24")
+variation_face_index = 5
+variation_embolden = -0.85
 
 [sub_resource type="LabelSettings" id="LabelSettings_gmw3p"]
-font = SubResource("SystemFont_s36sq")
+font = SubResource("FontVariation_l8n7c")
 font_size = 36
+font_color = Color(0.360932, 0.334937, 0.608967, 1)
+outline_size = 10
 
 [node name="MenuContainer" type="Control"]
 layout_mode = 3
@@ -45,6 +60,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="ButtonsContainer"]
 layout_mode = 2
+text = "Shadow Resonate"
+label_settings = SubResource("LabelSettings_3r0kd")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ButtonsContainer"]
 layout_mode = 2
@@ -67,7 +85,7 @@ text = "Start Game"
 
 [node name="OptionsButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
-text = "Options"
+text = "Difficulty"
 
 [node name="QuitButton" type="Button" parent="ButtonsContainer"]
 layout_mode = 2

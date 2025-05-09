@@ -10,11 +10,12 @@ extends Control
 
 func _ready():
 	set_process_input(true)
-	var parent_size = get_viewport_rect().size
-	label.position = (parent_size - label.size)/2
+	#var parent_size = get_viewport_rect().size
+	#label.position = (parent_size - label.size)/2
 	#var panel_size = panel.size * .7
 	#panel.size = panel_size
-	panel.position = (parent_size - panel.size) / 3
+	#panel.position = (parent_size - panel.size) / 3
+	#panel.position = get_viewport_rect().size / 2
 	# Pre-select current difficulty
 	match Settings.difficulty:
 		Settings.Difficulty.EASY:
@@ -52,10 +53,10 @@ func highlight_button(active_button: Button):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		print("\n mouse input detected")
+		#print("\n mouse input detected")
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("\nleft mouse click detected at ", event.global_position)
+			#print("\nleft mouse click detected at ", event.global_position)
 			var panel_rect = panel.get_global_rect()
 			if not panel_rect.has_point(event.global_position):
-				print("\n click outside menu")
+				#print("\n click outside menu")
 				queue_free()

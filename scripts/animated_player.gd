@@ -160,6 +160,7 @@ func _on_gun_cooldown_timeout() -> void:
 
 # implementing new reload  mechanics 
 func start_reload():
+	$ReloadSound.play()
 	#print("reloading\n")
 	HUD.start_reload()
 	#$Body.stop()

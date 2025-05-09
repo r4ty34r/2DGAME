@@ -15,6 +15,7 @@ extends Control
 
 
 func _ready():
+	self.size = get_viewport_rect().size
 	 # Create a global audio player
 	var music_player = AudioStreamPlayer.new()
 	music_player.stream = preload("res://music/80SSYNTH.mp3")
@@ -108,6 +109,8 @@ func _on_Options_pressed():
 	# Implement options menu functionality
 	# This could be a popup or a new scene
 	#print("Options button pressed")
+	var settings_menu = preload("res://scenes/settings_menu.tscn").instantiate()
+	add_child(settings_menu)
 	pass
 
 func _on_Quit_pressed():

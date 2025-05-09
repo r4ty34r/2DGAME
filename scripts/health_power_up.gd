@@ -2,7 +2,7 @@
 extends Area2D
 
 
-@export var heal_amount = 50  # Amount of health to restore
+@export var heal_amount = Settings.powerupHealhAmt     #50  # Amount of health to restore
 @export var collection_effect_scene: PackedScene  # Optional particle effect for collection
 
 

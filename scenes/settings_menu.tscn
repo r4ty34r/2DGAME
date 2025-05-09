@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://e8y71u1qgg6b"]
+
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_qp068"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qp068")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.76662, 0.76662, 0.76662, 1)
+layout_mode = 0
+offset_right = 244.0
+offset_bottom = 63.0
+scale = Vector2(3, 3)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 58.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Select Difficulty"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Easy" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "EASY"
+
+[node name="Regular" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "REGULAR"
+
+[node name="Impossible" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "IMPOSSIBLE"

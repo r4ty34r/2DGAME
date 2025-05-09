@@ -25,8 +25,7 @@ func _process(_delta: float) -> void:
 		PlayerData.send_flag = false #prevents spamming requests
 
 func test_api():
-	#var url = "http://127.0.0.1:8000/test"
-	#var url2 = "http://ocodes.xyz:8080/analytics/api/test"
+	#var url = "http://127.0.0.1:8000/test" # use this for local development
 	var url = "https://ocodes.xyz/analytics/api/test"
 	var error = http_request.request(url)
 	if error != OK:

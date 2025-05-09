@@ -1,4 +1,16 @@
 res://scenes/menu_container.tscn
 res://assets/light_texture.tres
+res://scripts/HTTPSCRIPT.gd
+res://scripts/main_menu.gd
 res://scenes/main.tscn
 res://scenes/HTTPNODE.tscn
+res://scenes/control_ui.tscn
+res://scenes/health_power_up.tscn
+res://testpower.tscn
+res://scripts/settings.gd
+res://scripts/animated_player.gd
+res://scripts/ai_nav.gd
+res://scripts/main2.gd
+res://scripts/health_power_up.gd
+res://scenes/settings_menu.tscn
+res://scripts/settings_menu.gd

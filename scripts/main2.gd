@@ -14,10 +14,18 @@ extends Node2D
 var score: int = 0
 var scene_start_time: int = 0
 @export var health_powerup_scene: PackedScene = preload("res://scenes/health_power_up.tscn")
-@export var powerup_spawn_timer = 2.0  # Seconds between spawns
+@export var powerup_spawn_timer = Settings.healthTimer    #2.0  # Seconds between spawns
 var elapsed_time 
 
 func _ready():
+	# Print a more readable string representation
+	match Settings.difficulty:
+		Settings.Difficulty.EASY:
+			print("Game starting on Easy difficulty")
+		Settings.Difficulty.REGULAR:
+			print("Game starting on Regular difficulty")
+		Settings.Difficulty.IMPOSSIBLE:
+			print("Game starting on Impossible difficulty")
 	 # Create a global audio player
 	var music_player = AudioStreamPlayer.new()
 	music_player.stream = preload("res://music/ELECTROSYNTH.mp3")
@@ -140,7 +148,7 @@ func spawn_health_powerup():
 	powerup.global_position = spawn_position
 
 func _on_power_up_timer_timeout() -> void:
-	if player.health < 80:
+	if player.health < 60:
 		spawn_health_powerup() # commented out  to test health bar animation
 		#print("power up spawn")
 # function to control random spawning of power ups and enemies

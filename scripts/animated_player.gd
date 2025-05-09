@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var rotation_speed: float = 5.0  # Radians per second
 @export var movement_speed: float = 500.0  # Pixels per second
 @export var acceleration: float = 5.0  # How quickly the character reaches full speed
-@export var damageAmount = 10
+@export var damageAmount = Settings.playerDamageSetting       #10
 @export var health: float = 100
 @export var maxHealth = 100
 var canShoot: bool = true

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene = preload("res://scenes/enemy_bullet.tscn")
 @export var shoot_interval: float = 1.0
 @export var health: float = 100.0
-@export var damage_amount: float = 25.0
+@export var damage_amount: float = Settings.enemyDamageSetting
 
 # State Tracking
 enum EnemyState {IDLE, CHASE, ATTACK, RETREAT}

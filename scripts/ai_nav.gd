@@ -27,6 +27,8 @@ func _ready():
 	#shoot_timer.wait_time = shoot_interval
 	#shoot_timer.start()
 	$ShootTimer.wait_time = shoot_interval
+	$GunCooldown.wait_time = shoot_interval
+	$GunCooldown.start()
 	$ShootTimer.start()
 
 
@@ -84,6 +86,7 @@ func _on_ShootTimer_timeout():
 		shoot()
 
 func shoot():
+	$Body/Gun/MuzzleFlash.visible = true
 	if bullet_scene:
 		var bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
@@ -93,6 +96,7 @@ func shoot():
 		# Add slight randomness to shooting for more natural behavior
 		var random_spread = randf_range(-5, 5)
 		bullet.rotation = rotation + deg_to_rad(random_spread)
+	
 
 func damage():
 	health -= damage_amount
@@ -151,3 +155,7 @@ func navigate_to_target(target_position: Vector2):
 		navigation_agent.set_velocity(new_velocity)
 	else:
 		velocity = new_velocity
+
+
+func _on_gun_cooldown_timeout() -> void:
+	$Body/Gun/MuzzleFlash.visible = false

@@ -1,6 +1,6 @@
-[gd_scene load_steps=94 format=3 uid="uid://bgt6w34wmv1ow"]
+[gd_scene load_steps=95 format=3 uid="uid://bgt6w34wmv1ow"]
 
-[ext_resource type="Script" uid="uid://cfqsymall0na6" path="res://scripts/animated_player.gd" id="1_7csb6"]
+[ext_resource type="Script" path="res://scripts/animated_player.gd" id="1_7csb6"]
 [ext_resource type="Texture2D" uid="uid://d0or07f1kwhar" path="res://spritesheet/rifle/move/survivor-move_rifle_0.png" id="2_hestk"]
 [ext_resource type="Texture2D" uid="uid://v0q174bacmrg" path="res://spritesheet/rifle/idle/survivor-idle_rifle_0.png" id="2_oar4f"]
 [ext_resource type="Texture2D" uid="uid://clk0hnxw2hpkc" path="res://spritesheet/rifle/idle/survivor-idle_rifle_1.png" id="3_n1n1u"]
@@ -64,7 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://h2tlxexrb1k3" path="res://spritesheet/rifle/shoot/survivor-shoot_rifle_0.png" id="62_3ho2h"]
 [ext_resource type="Texture2D" uid="uid://knmc1h0mi0j3" path="res://spritesheet/rifle/shoot/survivor-shoot_rifle_1.png" id="63_0c7k3"]
 [ext_resource type="Texture2D" uid="uid://btm8mvwo4quk0" path="res://spritesheet/rifle/shoot/survivor-shoot_rifle_2.png" id="64_phxk3"]
-[ext_resource type="Script" uid="uid://lchy6qs6ckyg" path="res://scripts/player_camera.gd" id="65_ef2ae"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="65_ef2ae"]
 [ext_resource type="Texture2D" uid="uid://d2ix1bahomeld" path="res://spritesheet/feet/run/survivor-run_0.png" id="65_htvit"]
 [ext_resource type="Texture2D" uid="uid://0rlehceyxhbn" path="res://assets/Muzzle-Flash.png" id="65_nlert"]
 [ext_resource type="Texture2D" uid="uid://cpo1pwl71hdua" path="res://spritesheet/feet/run/survivor-run_1.png" id="66_sonxf"]
@@ -89,6 +89,7 @@
 [ext_resource type="AudioStream" uid="uid://32ob6pvpoqkf" path="res://music/GunSound.mp3" id="88_7kdne"]
 [ext_resource type="Texture2D" uid="uid://dy8jyxru8hnqk" path="res://assets/light_texture.tres" id="88_xkexe"]
 [ext_resource type="PackedScene" uid="uid://c4lcnm5h0yvni" path="res://scenes/hud.tscn" id="89_0illf"]
+[ext_resource type="AudioStream" uid="uid://denh5xqj0u0d6" path="res://assets/Lever Cycle Fast 2 MP3.mp3" id="90_ojs17"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7x2fo"]
 animations = [{
@@ -508,5 +509,10 @@ occluder = SubResource("OccluderPolygon2D_4o46w")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(129, 46)
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("90_ojs17")
+volume_db = 13.333
+pitch_scale = 0.94
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
